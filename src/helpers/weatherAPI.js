@@ -1,4 +1,3 @@
-// Remova os comentários a medida que for implementando as funções  zx 1' 21
 const TOKEN = 'd14d5ccb65ca4874b8103716230407';
 
 export const searchCities = async (TERMO_DE_BUSCA) => {
