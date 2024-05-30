@@ -4,26 +4,21 @@ export const searchCities = async (TERMO_DE_BUSCA) => {
   const response = await fetch(`http://api.weatherapi.com/v1/search.json?lang=pt&key=${TOKEN}&q=${TERMO_DE_BUSCA}`);
   const data = await response.json();
   if (data.length === 0) {
-    window.alert('Nenhuma cidade encontrada');
+    window.alert('City not found');
     return data;
   }
   return data;
 };
 
 async function createCityObject(data) {
-  const currentObj = {
-    name: '',
-    country: '',
-    temp: '',
-    condition: '',
-    icon: '',
+  const { location, current } = data;
+  return {
+    name: location.name,
+    country: location.country,
+    temp: current.temp_c,
+    condition: current.condition.text,
+    icon: current.condition.icon,
   };
-  currentObj.name = data.location.name;
-  currentObj.country = data.location.country;
-  currentObj.temp = data.current.temp_c;
-  currentObj.condition = data.current.condition.text;
-  currentObj.icon = data.current.condition.icon;
-  return currentObj;
 }
 
 export const getWeatherByCity = async (URL_CIDADE) => {
