@@ -1,4 +1,4 @@
-const TOKEN = 'd14d5ccb65ca4874b8103716230407';
+const TOKEN = import.meta.env.VITE_TOKEN;
 
 export const searchCities = async (TERMO_DE_BUSCA) => {
   const response = await fetch(`http://api.weatherapi.com/v1/search.json?lang=pt&key=${TOKEN}&q=${TERMO_DE_BUSCA}`);
